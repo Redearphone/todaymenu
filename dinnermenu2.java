@@ -1,4 +1,4 @@
-package com.gmail.dinnermenu;
+package com.gmail.dinnermenu2;
 
 import java.util.*;
 import java.util.Random;
