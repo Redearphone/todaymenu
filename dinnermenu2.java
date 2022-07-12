@@ -6,7 +6,7 @@ import java.util.Random;
 class DinnerMenu {
 
     //肉料理を返すメソッド
-    static void meatmenu() {
+    static String meatmenu() {
         String[] meat = {
             "鳥の照り焼き",
             "焼き肉",
@@ -21,9 +21,8 @@ class DinnerMenu {
         };
         List<String> list = Arrays.asList(meat);
         Collections.shuffle(list);
-        meat = (String[])list.toArray(new String[list.size()]);
-        System.out.println(meat[0]);
-        
+        meat = list.toArray(new String[list.size()]);
+        return meat[0];        
     }
 
     //魚料理を返すメソッド
@@ -35,8 +34,10 @@ class DinnerMenu {
             "鯖の醤油煮",
             "秋刀魚の塩焼き",
         };
-        int fishnum = (int) (Math.random() * (fish.length));
-        return fish[fishnum];
+        List<String> list = Arrays.asList(fish);
+        Collections.shuffle(list);
+        fish = list.toArray(new String[list.size()]);
+        return fish[0];
     }
     //どんぶりを返すメソッド
     static String bowlmenu() {
@@ -47,11 +48,13 @@ class DinnerMenu {
             "焼肉丼",
             "鳥丼",
         };
-        int bowlnum = (int) (Math.random() * (bowl.length));
-        return bowl[bowlnum];
+        List<String> list = Arrays.asList(bowl);
+        Collections.shuffle(list);
+        bowl = list.toArray(new String[list.size()]);
+        return bowl[0];
     }
     //小鉢を返すメソッド
-    static String submenu() {
+    static String submenu(int i) {
         String[] subdish ={
             "ほうれん草のお浸し",
             "きんぴらごぼう",
@@ -64,42 +67,43 @@ class DinnerMenu {
             "揚げ出し豆腐",
             "味噌汁"
         };
-        int subnum = (int) (Math.random() * (subdish.length));
-        return subdish[subnum];
+        List<String> list = Arrays.asList(subdish);
+        Collections.shuffle(list);
+        subdish = list.toArray(new String[list.size()]);
+        return subdish[i];
     }
     public static void main(String[] args){
         Scanner stdIn = new Scanner(System.in);
-        meatmenu();
      
         
         //最初の文字表示
-        //     int retry;
-        //     int chefhand;
-        //     do {
-        //     do {
-        //     System.out.println("今日の晩御飯は？");
-        //     System.out.println("0...肉料理　1...魚料理　2...丼ぶり");
-        //     System.out.print("入力 : ");
-        //     chefhand = stdIn.nextInt();
-        //     } while (chefhand < 0 || chefhand > 2);
+            int retry;
+            int chefhand;
+            do {
+            do {
+            System.out.println("今日の晩御飯は？");
+            System.out.println("0...肉料理　1...魚料理　2...丼ぶり");
+            System.out.print("入力 : ");
+            chefhand = stdIn.nextInt();
+            } while (chefhand < 0 || chefhand > 2);
          
 
-        //     switch  (chefhand) {
-        //         case 0 : 
-        //         System.out.println("メイン : 「" + meatmenu() + "」");
-        //         System.out.println("小鉢　: 「" + submenu() + "」と「" + submenu() +"」");
-        //         break;
-        //         case 1 : 
-        //         System.out.println("メイン : 「" + fishmenu() + "」");
-        //         System.out.println("小鉢　: 「" + submenu() + "」と「" + submenu() +"」");
-        //         break;
-        //         case 2 :
-        //         System.out.println("メイン : 「" + bowlmenu() + "」");
-        //         break;
-        //     }
-        //     System.out.println("もう一度？ 1...Yes/0...No : ");
-        //     retry = stdIn.nextInt();
+            switch  (chefhand) {
+                case 0 : 
+                System.out.println("メイン : 「" + meatmenu() + "」");
+                System.out.println("小鉢　: 「" + submenu(0) + "」と「" + submenu(1) +"」");
+                break;
+                case 1 : 
+                System.out.println("メイン : 「" + fishmenu() + "」");
+                System.out.println("小鉢　: 「" + submenu(0) + "」と「" + submenu(1) +"」");
+                break;
+                case 2 :
+                System.out.println("メイン : 「" + bowlmenu() + "」");
+                break;
+            }
+            System.out.println("もう一度？ 1...Yes/0...No : ");
+            retry = stdIn.nextInt();
             
-        // } while (retry == 1);
+        } while (retry == 1);
     }
 }
